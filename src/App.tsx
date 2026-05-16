@@ -190,6 +190,35 @@ const Home = () => {
         <div className="hero-bg" style={{ backgroundImage: `url('${heroImage}')` }}></div>
         <div className="hero-overlay"></div>
         <div className="container hero-content">
+          <h1 className="hero-h1">ŞEREF <span>MOTOR</span></h1>
+          <p className="hero-desc">Turgutlu'nun lider elektrikli araç servisi. Akü, yedek parça ve profesyonel onarım çözümleriyle her zaman yanınızdayız.</p>
+          
+          <div className="hero-info-grid">
+            <div className="hero-info-item">
+              <Wrench size={24} />
+              <span>Yetkili Servis</span>
+            </div>
+            <div className="hero-info-item">
+              <Zap size={24} />
+              <span>Elektrikli Araçlar</span>
+            </div>
+            <div className="hero-info-item">
+              <Settings size={24} />
+              <span>Yedek Parça</span>
+            </div>
+            <div className="hero-info-item">
+              <Zap size={24} />
+              <span>Güvenilir Hizmet</span>
+            </div>
+          </div>
+
+          <div className="hero-slogan">"Ustanın elinden çıkar, güvenle yola çıkar."</div>
+          
+          <div className="hero-contact-minimal">
+            <span><Phone size={16} /> {businessInfo.phone}</span>
+            <span><MapPin size={16} /> {businessInfo.address}</span>
+          </div>
+
           <div className="hero-btns">
             <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-cta">
               <MessageCircle size={18} /> WhatsApp Destek
