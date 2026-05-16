@@ -191,12 +191,15 @@ const Home = () => {
         <div className="hero-overlay"></div>
         <div className="container hero-content">
           <div className="hero-btns">
+            <button className="btn btn-primary btn-cta" onClick={() => window.open(getWhatsAppLink(), '_blank')}>
+              <MessageCircle size={18} /> WhatsApp Destek
+            </button>
             <Link to="/products" className="btn btn-primary btn-cta">Ürünleri İncele</Link>
             <a href={businessInfo.locationUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-cta">
               <MapPin size={18} /> Konumumuz
             </a>
             <Link to="/contact" className="btn btn-primary btn-cta">
-              <MessageCircle size={18} /> İletişim
+              <Phone size={18} /> İletişim
             </Link>
             <a href="https://www.instagram.com/oner_seref/" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-cta">
               <Instagram size={24} />
