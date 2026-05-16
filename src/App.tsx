@@ -191,9 +191,9 @@ const Home = () => {
         <div className="hero-overlay"></div>
         <div className="container hero-content">
           <div className="hero-btns">
-            <button className="btn btn-primary btn-cta" onClick={() => window.open(getWhatsAppLink(), '_blank')}>
+            <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-cta">
               <MessageCircle size={18} /> WhatsApp Destek
-            </button>
+            </a>
             <Link to="/products" className="btn btn-primary btn-cta">Ürünleri İncele</Link>
             <a href={businessInfo.locationUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-cta">
               <MapPin size={18} /> Konumumuz
