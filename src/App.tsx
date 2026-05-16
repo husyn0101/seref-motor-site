@@ -92,6 +92,8 @@ const Navbar = memo(() => {
           </div>
         </nav>
 
+        {isMenuOpen && <div className="nav-backdrop" onClick={closeMenu}></div>}
+
         <div className="header-actions">
           <form className="header-search desktop" onSubmit={handleSearch}>
             <Search size={18} />
