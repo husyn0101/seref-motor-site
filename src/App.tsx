@@ -269,26 +269,29 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="seo-content-section" style={{ padding: '4rem 0', background: '#f9f9f9' }}>
+      <section className="seo-content-section">
         <div className="container">
-          <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+          <div className="seo-content-wrapper">
             <h2 className="section-title">Turgutlu'nun Güvenilir <span>Elektrikli Motor Tamircisi</span></h2>
-            <p style={{ lineHeight: '1.8', color: '#555', marginBottom: '2rem' }}>
+            <p className="seo-description">
               Şeref Motor olarak, <strong>Manisa Turgutlu</strong> bölgesinde elektrikli bisiklet ve motor kullanıcılarına profesyonel servis hizmeti sunuyoruz. 
               <strong>Elektrikli motor tamiri</strong>, <strong>akü değişimi</strong>, <strong>beyin tamiri</strong> ve <strong>yedek parça</strong> temini konularında 
               yılların verdiği tecrübe ile hareket ediyoruz. Kaliteli işçilik ve orijinal yedek parça kullanımı ile motorunuzun ömrünü uzatıyoruz.
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', marginTop: '3rem' }}>
-              <div className="seo-feature">
-                <h3 style={{ color: 'var(--primary)', marginBottom: '1rem' }}>Yedek Parça</h3>
+            <div className="seo-features-grid">
+              <div className="seo-feature card">
+                <div className="seo-feature-icon"><Settings size={32} /></div>
+                <h3>Yedek Parça</h3>
                 <p>Elektrikli motor yedek parça seçeneklerinde geniş stok ve uygun fiyat garantisi.</p>
               </div>
-              <div className="seo-feature">
-                <h3 style={{ color: 'var(--primary)', marginBottom: '1rem' }}>Bakım Servisi</h3>
+              <div className="seo-feature card">
+                <div className="seo-feature-icon"><Wrench size={32} /></div>
+                <h3>Bakım Servisi</h3>
                 <p>Elektrikli bisiklet bakım servisi ile periyodik kontrollerinizi eksiksiz yapıyoruz.</p>
               </div>
-              <div className="seo-feature">
-                <h3 style={{ color: 'var(--primary)', marginBottom: '1rem' }}>Akü Çözümleri</h3>
+              <div className="seo-feature card">
+                <div className="seo-feature-icon"><Battery size={32} /></div>
+                <h3>Akü Çözümleri</h3>
                 <p>Yüksek performanslı jel aküler ve akıllı şarj sistemleri ile kesintisiz sürüş.</p>
               </div>
             </div>
