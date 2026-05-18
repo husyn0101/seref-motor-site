@@ -181,10 +181,14 @@ const ProductModal = ({ product, onClose }: { product: Product; onClose: () => v
 const Home = () => {
   const navigate = useNavigate();
   const featured = useMemo(() => [
-    { name: 'Aküler', category: 'aku', image: '/motorfoto/akü stock.jpg', icon: <Battery size={24} /> },
-    { name: 'Elektronik Beyinler', category: 'yedek-parca', image: '/elektriliparca/akıllı kara beyin.webp', icon: <Cpu size={24} /> },
-    { name: 'Şarj Sistemleri', category: 'sarj', image: '/motorfoto/or-tec akıllı sarj aleti.jpg', icon: <Settings size={24} /> }
+    { name: 'Elektrikli Motor Aküleri', category: 'aku', image: '/motorfoto/akü stock.jpg', icon: <Battery size={24} /> },
+    { name: 'Elektronik Beyinler & Parçalar', category: 'yedek-parca', image: '/elektriliparca/akıllı kara beyin.webp', icon: <Cpu size={24} /> },
+    { name: 'Akıllı Şarj Sistemleri', category: 'sarj', image: '/motorfoto/or-tec akıllı sarj aleti.jpg', icon: <Settings size={24} /> }
   ], []);
+
+  useEffect(() => {
+    document.title = "Şeref Motor - Turgutlu Elektrikli Motor Servisi & Yedek Parça";
+  }, []);
 
   return (
     <div className="home-page">
@@ -193,7 +197,10 @@ const Home = () => {
         <div className="hero-overlay"></div>
         <div className="container hero-content">
           <h1 className="hero-h1">ŞEREF <span>MOTOR</span></h1>
-          <p className="hero-desc">Turgutlu'nun lider elektrikli araç servisi. Akü, yedek parça ve profesyonel onarım çözümleriyle her zaman yanınızdayız.</p>
+          <h2 className="hero-h2" style={{ fontSize: '1.5rem', fontWeight: '500', marginBottom: '1.5rem', color: '#eee' }}>
+            Manisa Turgutlu Elektrikli Bisiklet Servisi & Motor Tamiri
+          </h2>
+          <p className="hero-desc">Turgutlu'nun lider elektrikli araç servisi. Akü, yedek parça ve profesyonel onarım çözümleriyle her zaman yanınızdayız. Elektrikli motor bakım servisi konusunda uzman ekibimizle hizmetinizdeyiz.</p>
           
           <div className="hero-info-grid">
             <div className="hero-info-item">
@@ -246,11 +253,11 @@ const Home = () => {
 
       <section className="featured-section">
         <div className="container">
-          <h2 className="section-title">Öne Çıkan <span>Kategoriler</span></h2>
+          <h2 className="section-title">Öne Çıkan <span>Hizmet Kategorileri</span></h2>
           <div className="featured-grid">
             {featured.map((item, idx) => (
               <div key={idx} className="featured-card card" onClick={() => navigate('/products', { state: { category: item.category } })}>
-                <img src={item.image} alt={item.name} loading="lazy" />
+                <img src={item.image} alt={`${item.name} - Şeref Motor Turgutlu`} loading="lazy" />
                 <div className="featured-info">
                   {item.icon}
                   <h3>{item.name}</h3>
@@ -258,6 +265,33 @@ const Home = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="seo-content-section" style={{ padding: '4rem 0', background: '#f9f9f9' }}>
+        <div className="container">
+          <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+            <h2 className="section-title">Turgutlu'nun Güvenilir <span>Elektrikli Motor Tamircisi</span></h2>
+            <p style={{ lineHeight: '1.8', color: '#555', marginBottom: '2rem' }}>
+              Şeref Motor olarak, <strong>Manisa Turgutlu</strong> bölgesinde elektrikli bisiklet ve motor kullanıcılarına profesyonel servis hizmeti sunuyoruz. 
+              <strong>Elektrikli motor tamiri</strong>, <strong>akü değişimi</strong>, <strong>beyin tamiri</strong> ve <strong>yedek parça</strong> temini konularında 
+              yılların verdiği tecrübe ile hareket ediyoruz. Kaliteli işçilik ve orijinal yedek parça kullanımı ile motorunuzun ömrünü uzatıyoruz.
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', marginTop: '3rem' }}>
+              <div className="seo-feature">
+                <h3 style={{ color: 'var(--primary)', marginBottom: '1rem' }}>Yedek Parça</h3>
+                <p>Elektrikli motor yedek parça seçeneklerinde geniş stok ve uygun fiyat garantisi.</p>
+              </div>
+              <div className="seo-feature">
+                <h3 style={{ color: 'var(--primary)', marginBottom: '1rem' }}>Bakım Servisi</h3>
+                <p>Elektrikli bisiklet bakım servisi ile periyodik kontrollerinizi eksiksiz yapıyoruz.</p>
+              </div>
+              <div className="seo-feature">
+                <h3 style={{ color: 'var(--primary)', marginBottom: '1rem' }}>Akü Çözümleri</h3>
+                <p>Yüksek performanslı jel aküler ve akıllı şarj sistemleri ile kesintisiz sürüş.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -272,6 +306,7 @@ const ProductsPage = () => {
   const [selected, setSelected] = useState<Product | null>(null);
 
   useEffect(() => {
+    document.title = "Ürün Kataloğu - Elektrikli Motor Yedek Parçaları | Şeref Motor";
     if (location.state?.category) {
       setActiveCategory(location.state.category);
       setSearch('');
@@ -295,7 +330,8 @@ const ProductsPage = () => {
     <div className="page-wrapper">
       <div className="page-header">
         <div className="container">
-          <h2 className="section-title no-margin">Ürün <span>Kataloğu</span></h2>
+          <h1 className="section-title no-margin" style={{ fontSize: '2.5rem' }}>Elektrikli Motor <span>Yedek Parça Kataloğu</span></h1>
+          <p style={{ marginTop: '1rem', color: '#eee' }}>Turgutlu'nun en geniş yedek parça stoğu ile hizmetinizdeyiz.</p>
         </div>
       </div>
       <section className="products-section">
@@ -318,7 +354,7 @@ const ProductsPage = () => {
               <div key={p.id} className="product-card card" onClick={() => setSelected(p)}>
                 <div className="product-img">
                   <span className="stock-badge">Stokta</span>
-                  <img src={p.image} alt={p.name} loading="lazy" />
+                  <img src={p.image} alt={`${p.name} - Şeref Motor Yedek Parça`} loading="lazy" />
                 </div>
                 <div className="product-info">
                   <h3>{p.name}</h3>
@@ -341,87 +377,120 @@ const ProductsPage = () => {
   );
 };
 
-const ServicesPage = () => (
-  <div className="page-wrapper">
-    <div className="page-header"><div className="container"><h2 className="section-title no-margin">Teknik <span>Hizmetler</span></h2></div></div>
-    <section className="services-page-content">
-      <div className="container">
-        <div className="services-intro">
-          <p>{businessInfo.description}</p>
-        </div>
-        <div className="service-grid">
-          {services.map((s, idx) => (
-            <div key={idx} className="service-card card">
-              <img src={s.image} alt={s.name} loading="lazy" />
-              <div className="service-info">
-                <h3>{s.name}</h3>
-                <p>{s.description}</p>
-              </div>
-            </div>
-          ))}
+const ServicesPage = () => {
+  useEffect(() => {
+    document.title = "Teknik Servis & Bakım Hizmetleri | Şeref Motor Turgutlu";
+  }, []);
+
+  return (
+    <div className="page-wrapper">
+      <div className="page-header">
+        <div className="container">
+          <h1 className="section-title no-margin" style={{ fontSize: '2.5rem' }}>Elektrikli Motor <span>Teknik Servis Hizmetleri</span></h1>
+          <p style={{ marginTop: '1rem', color: '#eee' }}>Profesyonel tamir, bakım ve onarım çözümleri.</p>
         </div>
       </div>
-    </section>
-  </div>
-);
-
-const AboutPage = () => (
-  <div className="page-wrapper">
-    <div className="page-header"><div className="container"><h2 className="section-title no-margin">Kurumsal <span>Kimliğimiz</span></h2></div></div>
-    <section className="about-page-content">
-      <div className="container">
-        <div className="about-layout">
-          <div className="about-image"><img src={aboutImage} alt="Şeref Motor Atölye" /></div>
-          <div className="about-content">
-            <h2>Biz Kimiz?</h2>
-            <p className="about-text">Manisa Turgutlu'da uzun yıllardır elektrikli motor servisi ve yedek parça satışı alanında hizmet vermekteyiz. Deneyimli usta kadromuzla, orijinal parça garantisi ve profesyonel işçilik ile motorunuzun ömrünü uzatıyoruz.</p>
-            <div className="stats">
-              <div className="stat-item"><Zap size={24} /> <div><h4>Hızlı Çözüm</h4></div></div>
-              <div className="stat-item"><Wrench size={24} /> <div><h4>Uzman Kadro</h4></div></div>
-            </div>
+      <section className="services-page-content">
+        <div className="container">
+          <div className="services-intro">
+            <p>{businessInfo.description} Turgutlu'da elektrikli bisiklet tamiri ve motor bakımı konusunda bir numaralı adresiniz Şeref Motor.</p>
+          </div>
+          <div className="service-grid">
+            {services.map((s, idx) => (
+              <div key={idx} className="service-card card">
+                <img src={s.image} alt={`${s.name} - Şeref Motor Servis`} loading="lazy" />
+                <div className="service-info">
+                  <h3>{s.name}</h3>
+                  <p>{s.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
-    </section>
-  </div>
-);
+      </section>
+    </div>
+  );
+};
 
-const ContactPage = () => (
-  <div className="page-wrapper">
-    <div className="page-header"><div className="container"><h2 className="section-title no-margin">İletişim <span>Kanalları</span></h2></div></div>
-    <section className="contact-page-content">
-      <div className="container">
-        <div className="contact-layout">
-          <div className="contact-info">
-            <div className="info-card"><Phone size={32} /> <div><h4>Müşteri Hizmetleri</h4><p>{businessInfo.phone}</p></div></div>
-            <div className="info-card clickable" onClick={() => window.open(getWhatsAppLink(), '_blank')}>
-              <MessageCircle size={32} /> <div><h4>WhatsApp Destek</h4><p>Hemen Mesaj Gönder</p></div>
-            </div>
-            <div className="info-card"><MapPin size={32} /> <div><h4>Mağaza Adresi</h4><p>{businessInfo.address}</p></div></div>
-            
-            <div className="social-contact-section">
-              <h4>Sosyal Medya Hesaplarımız</h4>
-              <div className="social-links-row">
-                <a href="https://www.instagram.com/oner_seref/" target="_blank" rel="noopener noreferrer" className="social-link-item">
-                  <Instagram size={20} /> Instagram
-                </a>
-                <a href="https://www.facebook.com/oner.seref?locale=tr_TR" target="_blank" rel="noopener noreferrer" className="social-link-item">
-                  <Facebook size={20} /> Facebook
-                </a>
+const AboutPage = () => {
+  useEffect(() => {
+    document.title = "Hakkımızda - Şeref Motor Turgutlu Kurumsal";
+  }, []);
+
+  return (
+    <div className="page-wrapper">
+      <div className="page-header">
+        <div className="container">
+          <h1 className="section-title no-margin" style={{ fontSize: '2.5rem' }}>Şeref Motor <span>Kurumsal Kimliğimiz</span></h1>
+          <p style={{ marginTop: '1rem', color: '#eee' }}>Turgutlu'da güvenin ve tecrübenin adresi.</p>
+        </div>
+      </div>
+      <section className="about-page-content">
+        <div className="container">
+          <div className="about-layout">
+            <div className="about-image"><img src={aboutImage} alt="Şeref Motor Turgutlu Atölye ve Usta" /></div>
+            <div className="about-content">
+              <h2>Biz Kimiz?</h2>
+              <p className="about-text">Manisa Turgutlu'da uzun yıllardır elektrikli motor servisi ve yedek parça satışı alanında hizmet vermekteyiz. Deneyimli usta kadromuzla, orijinal parça garantisi ve profesyonel işçilik ile motorunuzun ömrünü uzatıyoruz.</p>
+              <div className="stats">
+                <div className="stat-item"><Zap size={24} /> <div><h4>Hızlı Çözüm</h4></div></div>
+                <div className="stat-item"><Wrench size={24} /> <div><h4>Uzman Kadro</h4></div></div>
               </div>
             </div>
           </div>
-          <div className="map-box">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3126.347565314782!2d27.7011!3d38.4239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDI1JzI2LjAiTiAyN8KwNDInMDQuMCJF!5e0!3m2!1str!2str!4v1651840000000" 
-              width="100%" height="100%" style={{ border: 0 }} loading="lazy" title="Şeref Motor Konum"
-            ></iframe>
-          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+const ContactPage = () => {
+  useEffect(() => {
+    document.title = "İletişim - Şeref Motor Turgutlu Telefon ve Adres";
+  }, []);
+
+  return (
+    <div className="page-wrapper">
+      <div className="page-header">
+        <div className="container">
+          <h1 className="section-title no-margin" style={{ fontSize: '2.5rem' }}>Bize <span>Ulaşın</span></h1>
+          <p style={{ marginTop: '1rem', color: '#eee' }}>7/24 WhatsApp destek ve teknik bilgi için yanınızdayız.</p>
         </div>
       </div>
-    </section>
-  </div>
-);
+      <section className="contact-page-content">
+        <div className="container">
+          <div className="contact-layout">
+            <div className="contact-info">
+              <div className="info-card"><Phone size={32} /> <div><h4>Müşteri Hizmetleri</h4><p>{businessInfo.phone}</p></div></div>
+              <div className="info-card clickable" onClick={() => window.open(getWhatsAppLink(), '_blank')}>
+                <MessageCircle size={32} /> <div><h4>WhatsApp Destek</h4><p>Hemen Mesaj Gönder</p></div>
+              </div>
+              <div className="info-card"><MapPin size={32} /> <div><h4>Mağaza Adresi</h4><p>{businessInfo.address}</p></div></div>
+              
+              <div className="social-contact-section">
+                <h4>Sosyal Medya Hesaplarımız</h4>
+                <div className="social-links-row">
+                  <a href="https://www.instagram.com/oner_seref/" target="_blank" rel="noopener noreferrer" className="social-link-item">
+                    <Instagram size={20} /> Instagram
+                  </a>
+                  <a href="https://www.facebook.com/oner.seref?locale=tr_TR" target="_blank" rel="noopener noreferrer" className="social-link-item">
+                    <Facebook size={20} /> Facebook
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="map-box">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3126.347565314782!2d27.7011!3d38.4239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDI1JzI2LjAiTiAyN8KwNDInMDQuMCJF!5e0!3m2!1str!2str!4v1651840000000" 
+                width="100%" height="100%" style={{ border: 0 }} loading="lazy" title="Şeref Motor Turgutlu Konum"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
