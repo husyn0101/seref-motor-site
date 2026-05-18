@@ -421,8 +421,8 @@ const AboutPage = () => {
     <div className="page-wrapper">
       <div className="page-header">
         <div className="container">
-          <h1 className="section-title no-margin" style={{ fontSize: '2.5rem' }}>Şeref Motor <span>Kurumsal Kimliğimiz</span></h1>
-          <p style={{ marginTop: '1rem', color: '#eee' }}>Turgutlu'da güvenin ve tecrübenin adresi.</p>
+          <h1 className="section-title no-margin page-title-main">Şeref Motor <span>Kurumsal Kimliğimiz</span></h1>
+          <p className="page-header-desc">Turgutlu'da güvenin ve tecrübenin adresi.</p>
         </div>
       </div>
       <section className="about-page-content">
