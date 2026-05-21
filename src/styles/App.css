@@ -441,9 +441,16 @@ footer { background: #050505; padding: 100px 0 40px; border-top: 1px solid var(-
 }
 
 @media (max-width: 768px) {
-  .hero { padding-top: 120px; }
-  .hero-h1 { font-size: 3.5rem; }
-  .hero-desc { font-size: 1.1rem; display: block; }
+  .hero { 
+    padding-top: 140px; 
+    min-height: 80vh; /* Mobilde biraz daha ksa ama daha odakl */
+  }
+  .hero-bg {
+    background-position: center center;
+    background-size: cover;
+  }
+  .hero-h1 { font-size: 3rem; }
+  .hero-desc { font-size: 1.1rem; display: block; padding: 0 10px; }
   
   .hero-info-grid { 
     display: grid; 
@@ -496,26 +503,26 @@ footer { background: #050505; padding: 100px 0 40px; border-top: 1px solid var(-
 }
 
 /* ============================================================
-   EKSÝK CSS SINIFLARI — DÜZELTÝLDÝ
+   EKSï¿½K CSS SINIFLARI ï¿½ Dï¿½ZELTï¿½LDï¿½
    ============================================================ */
 
-/* .hide-mobile — Navbar'da "Hemen Ara" butonunu mobilde gizler */
+/* .hide-mobile ï¿½ Navbar'da "Hemen Ara" butonunu mobilde gizler */
 @media (max-width: 992px) {
   .hide-mobile { display: none !important; }
 }
 
-/* .page-wrapper — Tüm alt sayfa wrapper'ý */
+/* .page-wrapper ï¿½ Tï¿½m alt sayfa wrapper'ï¿½ */
 .page-wrapper {
   min-height: 100vh;
   padding-top: var(--header-height);
 }
 
-/* .home-page — Ana sayfa wrapper'ý */
+/* .home-page ï¿½ Ana sayfa wrapper'ï¿½ */
 .home-page {
   overflow-x: hidden;
 }
 
-/* .hero-h2 — Hero alt baþlýðý */
+/* .hero-h2 ï¿½ Hero alt baï¿½lï¿½ï¿½ï¿½ */
 .hero-h2 {
   font-size: 1.5rem;
   font-weight: 500;
@@ -524,12 +531,12 @@ footer { background: #050505; padding: 100px 0 40px; border-top: 1px solid var(-
   letter-spacing: -0.01em;
 }
 
-/* .no-margin — section-title'ýn margin'ini sýfýrlar */
+/* .no-margin ï¿½ section-title'ï¿½n margin'ini sï¿½fï¿½rlar */
 .section-title.no-margin {
   margin-bottom: 0;
 }
 
-/* .about-text — Hakkýmýzda sayfasý metin stili */
+/* .about-text ï¿½ Hakkï¿½mï¿½zda sayfasï¿½ metin stili */
 .about-text {
   font-size: 1.1rem;
   line-height: 1.9;
@@ -537,7 +544,7 @@ footer { background: #050505; padding: 100px 0 40px; border-top: 1px solid var(-
   margin-bottom: 30px;
 }
 
-/* .clickable — Týklanabilir info kartlarý (Ýletiþim sayfasý) */
+/* .clickable ï¿½ Tï¿½klanabilir info kartlarï¿½ (ï¿½letiï¿½im sayfasï¿½) */
 .info-card.clickable {
   cursor: pointer;
   transition: var(--transition);
@@ -548,7 +555,7 @@ footer { background: #050505; padding: 100px 0 40px; border-top: 1px solid var(-
   box-shadow: var(--shadow);
 }
 
-/* .seo-feature — Ana sayfa SEO özellik kutularý */
+/* .seo-feature ï¿½ Ana sayfa SEO ï¿½zellik kutularï¿½ */
 .seo-feature {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -572,7 +579,7 @@ footer { background: #050505; padding: 100px 0 40px; border-top: 1px solid var(-
   font-size: 0.95rem;
 }
 
-/* .seo-content-section — Ana sayfa SEO metin bölümü */
+/* .seo-content-section ï¿½ Ana sayfa SEO metin bï¿½lï¿½mï¿½ */
 .seo-content-section {
   padding: 4rem 0;
   background: #f9f9f9;
@@ -595,7 +602,7 @@ footer { background: #050505; padding: 100px 0 40px; border-top: 1px solid var(-
   margin-top: 3rem;
 }
 
-/* .featured-section — Ana sayfa öne çýkan kategoriler bölümü */
+/* .featured-section ï¿½ Ana sayfa ï¿½ne ï¿½ï¿½kan kategoriler bï¿½lï¿½mï¿½ */
 .featured-section {
   padding: clamp(60px, 10vw, 120px) 0;
 }

@@ -268,33 +268,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      <section className="seo-content-section">
-        <div className="container">
-          <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
-            <h2 className="section-title">Turgutlu'nun Güvenilir <span>Elektrikli Motor Tamircisi</span></h2>
-            <p>
-              Şeref Motor olarak, <strong>Manisa Turgutlu</strong> bölgesinde elektrikli bisiklet ve motor kullanıcılarına profesyonel servis hizmeti sunuyoruz. 
-              <strong>Elektrikli motor tamiri</strong>, <strong>akü değişimi</strong>, <strong>beyin tamiri</strong> ve <strong>yedek parça</strong> temini konularında 
-              yılların verdiği tecrübe ile hareket ediyoruz. Kaliteli işçilik ve orijinal yedek parça kullanımı ile motorunuzun ömrünü uzatıyoruz.
-            </p>
-            <div className="seo-feature-grid">
-              <div className="seo-feature">
-                <h3>Yedek Parça</h3>
-                <p>Elektrikli motor yedek parça seçeneklerinde geniş stok ve uygun fiyat garantisi.</p>
-              </div>
-              <div className="seo-feature">
-                <h3>Bakım Servisi</h3>
-                <p>Elektrikli bisiklet bakım servisi ile periyodik kontrollerinizi eksiksiz yapıyoruz.</p>
-              </div>
-              <div className="seo-feature">
-                <h3>Akü Çözümleri</h3>
-                <p>Yüksek performanslı jel aküler ve akıllı şarj sistemleri ile kesintisiz sürüş.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
