@@ -494,3 +494,108 @@ footer { background: #050505; padding: 100px 0 40px; border-top: 1px solid var(-
   .services-intro p { font-size: 1.2rem; }
   .services-intro { padding: 30px 20px; }
 }
+
+/* ============================================================
+   EKSÝK CSS SINIFLARI — DÜZELTÝLDÝ
+   ============================================================ */
+
+/* .hide-mobile — Navbar'da "Hemen Ara" butonunu mobilde gizler */
+@media (max-width: 992px) {
+  .hide-mobile { display: none !important; }
+}
+
+/* .page-wrapper — Tüm alt sayfa wrapper'ý */
+.page-wrapper {
+  min-height: 100vh;
+  padding-top: var(--header-height);
+}
+
+/* .home-page — Ana sayfa wrapper'ý */
+.home-page {
+  overflow-x: hidden;
+}
+
+/* .hero-h2 — Hero alt baþlýðý */
+.hero-h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color: #eeeeee;
+  letter-spacing: -0.01em;
+}
+
+/* .no-margin — section-title'ýn margin'ini sýfýrlar */
+.section-title.no-margin {
+  margin-bottom: 0;
+}
+
+/* .about-text — Hakkýmýzda sayfasý metin stili */
+.about-text {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: var(--text-muted);
+  margin-bottom: 30px;
+}
+
+/* .clickable — Týklanabilir info kartlarý (Ýletiþim sayfasý) */
+.info-card.clickable {
+  cursor: pointer;
+  transition: var(--transition);
+}
+.info-card.clickable:hover {
+  border-color: var(--primary);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+/* .seo-feature — Ana sayfa SEO özellik kutularý */
+.seo-feature {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px;
+  text-align: center;
+  transition: var(--transition);
+}
+.seo-feature:hover {
+  border-color: var(--primary);
+  transform: translateY(-4px);
+}
+.seo-feature h3 {
+  color: var(--primary);
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+}
+.seo-feature p {
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+/* .seo-content-section — Ana sayfa SEO metin bölümü */
+.seo-content-section {
+  padding: 4rem 0;
+  background: #f9f9f9;
+}
+.seo-content-section .section-title {
+  color: #222;
+}
+.seo-content-section p {
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 2rem;
+}
+.seo-content-section strong {
+  color: #333;
+}
+.seo-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+/* .featured-section — Ana sayfa öne çýkan kategoriler bölümü */
+.featured-section {
+  padding: clamp(60px, 10vw, 120px) 0;
+}

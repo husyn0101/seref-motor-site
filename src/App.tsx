@@ -50,8 +50,8 @@ const Navbar = memo(() => {
   const [localSearch, setLocalSearch] = useState('');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  const closeMenu = () => setIsMenuOpen(false);
+  const closeMenu = useCallback(() => setIsMenuOpen(false), []);
+  const toggleMenu = useCallback(() => setIsMenuOpen(prev => !prev), []);
 
   const handleSearch = useCallback((e: React.FormEvent) => {
     e.preventDefault();
@@ -61,11 +61,11 @@ const Navbar = memo(() => {
       setLocalSearch('');
       closeMenu();
     }
-  }, [localSearch, navigate]);
+  }, [localSearch, navigate, closeMenu]);
 
   useEffect(() => {
     closeMenu();
-  }, [pathname]);
+  }, [pathname, closeMenu]);
 
   return (
     <header>
@@ -150,6 +150,14 @@ const Footer = memo(() => (
 
 const ProductModal = ({ product, onClose }: { product: Product; onClose: () => void }) => {
   const waLink = useMemo(() => getWhatsAppLink(product.name), [product.name]);
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [onClose]);
 
   return (
     <div className="modal-backdrop" onClick={onClose}>
@@ -239,14 +247,6 @@ const Home = () => {
             <Link to="/contact" className="btn btn-primary btn-cta">
               <Phone size={18} /> İletişim
             </Link>
-            <a href="https://www.instagram.com/oner_seref/" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-cta">
-              <Instagram size={24} />
-              <span>Instagram</span>
-            </a>
-            <a href="https://www.facebook.com/oner.seref?locale=tr_TR" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-cta">
-              <Facebook size={24} />
-              <span>Facebook</span>
-            </a>
           </div>
         </div>
       </div>
@@ -269,26 +269,26 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="seo-content-section" style={{ padding: '4rem 0', background: '#f9f9f9' }}>
+      <section className="seo-content-section">
         <div className="container">
           <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
             <h2 className="section-title">Turgutlu'nun Güvenilir <span>Elektrikli Motor Tamircisi</span></h2>
-            <p style={{ lineHeight: '1.8', color: '#555', marginBottom: '2rem' }}>
+            <p>
               Şeref Motor olarak, <strong>Manisa Turgutlu</strong> bölgesinde elektrikli bisiklet ve motor kullanıcılarına profesyonel servis hizmeti sunuyoruz. 
               <strong>Elektrikli motor tamiri</strong>, <strong>akü değişimi</strong>, <strong>beyin tamiri</strong> ve <strong>yedek parça</strong> temini konularında 
               yılların verdiği tecrübe ile hareket ediyoruz. Kaliteli işçilik ve orijinal yedek parça kullanımı ile motorunuzun ömrünü uzatıyoruz.
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', marginTop: '3rem' }}>
+            <div className="seo-feature-grid">
               <div className="seo-feature">
-                <h3 style={{ color: 'var(--primary)', marginBottom: '1rem' }}>Yedek Parça</h3>
+                <h3>Yedek Parça</h3>
                 <p>Elektrikli motor yedek parça seçeneklerinde geniş stok ve uygun fiyat garantisi.</p>
               </div>
               <div className="seo-feature">
-                <h3 style={{ color: 'var(--primary)', marginBottom: '1rem' }}>Bakım Servisi</h3>
+                <h3>Bakım Servisi</h3>
                 <p>Elektrikli bisiklet bakım servisi ile periyodik kontrollerinizi eksiksiz yapıyoruz.</p>
               </div>
               <div className="seo-feature">
-                <h3 style={{ color: 'var(--primary)', marginBottom: '1rem' }}>Akü Çözümleri</h3>
+                <h3>Akü Çözümleri</h3>
                 <p>Yüksek performanslı jel aküler ve akıllı şarj sistemleri ile kesintisiz sürüş.</p>
               </div>
             </div>
@@ -307,14 +307,16 @@ const ProductsPage = () => {
 
   useEffect(() => {
     document.title = "Ürün Kataloğu - Elektrikli Motor Yedek Parçaları | Şeref Motor";
-    if (location.state?.category) {
-      setActiveCategory(location.state.category);
+    const state = location.state as { category?: string; search?: string } | null;
+    if (state?.category) {
+      setActiveCategory(state.category);
       setSearch('');
-    } else if (location.state?.search) {
-      setSearch(location.state.search);
+      window.history.replaceState({}, document.title);
+    } else if (state?.search) {
+      setSearch(state.search);
       setActiveCategory('all');
+      window.history.replaceState({}, document.title);
     }
-    window.history.replaceState({}, document.title);
   }, [location.state]);
 
   const filtered = useMemo(() => {
@@ -351,10 +353,25 @@ const ProductsPage = () => {
           </div>
           <div className="product-grid">
             {filtered.map(p => (
-              <div key={p.id} className="product-card card" onClick={() => setSelected(p)}>
+              <div
+                key={p.id}
+                className="product-card card"
+                onClick={() => setSelected(p)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === 'Enter' && setSelected(p)}
+                aria-label={`${p.name} ürününü incele`}
+              >
                 <div className="product-img">
                   <span className="stock-badge">Stokta</span>
-                  <img src={p.image} alt={`${p.name} - Şeref Motor Yedek Parça`} loading="lazy" />
+                  <img
+                    src={p.image}
+                    alt={`${p.name} - Şeref Motor Yedek Parça`}
+                    loading="lazy"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.opacity = '0.3';
+                    }}
+                  />
                 </div>
                 <div className="product-info">
                   <h3>{p.name}</h3>
